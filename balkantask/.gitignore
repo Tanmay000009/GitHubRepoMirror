@@ -1,4 +1,7 @@
 .DS_STORE
+/env
+*.env
+.vscode
 
 # Virtualenv related
 bin/
