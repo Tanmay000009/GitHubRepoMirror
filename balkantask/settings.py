@@ -68,7 +68,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend'
 ]
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'load_repositorios'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 SOCIAL_AUTH_GITHUB_KEY = env('GITHUB_CLIENT_ID')
@@ -85,7 +85,6 @@ SOCIAL_AUTH_PIPELINE = (
     'core.pipelines.create_user_profile',
     'social_core.pipeline.user.create_user',
     'social_core.pipeline.social_auth.associate_user',
-    'core.pipelines.create_user_repositories',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
 )
