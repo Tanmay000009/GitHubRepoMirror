@@ -7,6 +7,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar_url = models.URLField(blank=True, null=True)
     uid = models.CharField(max_length=255, blank=True, null=True)
+    access_token = models.CharField(max_length=255, blank=True, null=True)
 
 class UserRepositories(models.Model):
     "Model for user repositories"
