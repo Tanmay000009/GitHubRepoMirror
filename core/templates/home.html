@@ -1,10 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 <div class="flex flex-col gap-8">
-  <div class="flex flex-row items-center w-screen p-2  justify-between">
-    <div class="bg-[#eebbc3] rounded-lg text-xl py-2 px-5">
-      <i class="fa fa-github" aria-hidden="true"></i>
-      Tanmay000009
-    </div>
+  <div class="flex flex-row items-center w-screen p-2 justify-between">
+    <a
+      href="https://github.com/Tanmay000009"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div class="bg-[#eebbc3] rounded-lg text-base py-2 px-5">
+        Made with <i class="fa fa-heart" aria-hidden="true"></i> by
+        <i class="fa fa-github" aria-hidden="true"></i> tanmay000009
+      </div>
+    </a>
     <div class="flex flex-row gap-8 justify-center items-center">
       <a href="{% url 'logout' %}" class="btn btn-primary">
         <button
@@ -24,9 +30,9 @@
       </a>
     </div>
   </div>
-  <div class="flex flex-col h-full p-2 ">
+  <div class="flex flex-col h-full p-2">
     <div class="text-xl text-white">
-        Hi, <span class="text-[#b8c1ec]"> {{ user.username }}! </span>
+      Hi, <span class="text-[#b8c1ec]"> {{ user.username }}! </span>
     </div>
   </div>
   <div>{% endblock %}</div>
