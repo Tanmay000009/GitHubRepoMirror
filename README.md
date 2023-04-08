@@ -58,9 +58,9 @@ pip install -r requirements.txt
 [Click here](https://github.com/settings/applications/new)
 3. Enter the following information for the application:
     - Application name: Choose a name for your application.
-    - Homepage URL: Set this to http://127.0.0.1:8000/ or whatever your local server address is.
+    - Homepage URL: Set this to `http://127.0.0.1:8000/` or whatever your local server address is.
     - Application description: Optionally, enter a description for your application.
-    - Authorization callback URL: Set this to http://127.0.0.1:8000/social-auth/complete/github.
+    - Authorization callback URL: Set this to `http://127.0.0.1:8000/social-auth/complete/github`.
 4. After creating the application, you will be provided with a Client ID and a Client Secret. Keep these values safe, as you will need them later to configure the Django application.
 5. Copy the values from .env.sample to a new .env file in your project's root directory.
 6. Replace the placeholder values with your actual database credentials and GitHub OAuth application credentials.
