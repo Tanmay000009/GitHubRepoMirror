@@ -20,4 +20,12 @@ class UserRepositories(models.Model):
     status = models.CharField(max_length=255, blank=True, null=True)
     stars = models.IntegerField(blank=True, null=True)
 
-
+class UserOrganizations(models.Model):
+    "Model for user organizations"
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='organizations')
+    name = models.CharField(max_length=255)
+    id = models.IntegerField(primary_key=True)
+    owner_id = models.IntegerField(blank=True, null=True)
+    owner_name = models.CharField(max_length=255, blank=True, null=True)
+    owner_email = models.EmailField(blank=True, null=True)
+    
