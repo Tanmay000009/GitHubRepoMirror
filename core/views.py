@@ -169,11 +169,11 @@ def get_organizations(request):
     
     if failure:
         return JsonResponse({"status": "failure"})
-
+    print(orgs)
     filteredData = [{
         "id": org["id"],
         "name": org["login"],
-        "url": org["url"]
+        "html_url": f'https://github.com/{org["login"]}'
     } for org in orgs]
 
     # save or update organizations
@@ -181,14 +181,14 @@ def get_organizations(request):
         try:
             user_org = UserOrganizations.objects.get(id=org['id'])
             user_org.name = org['name']
-            user_org.url = org['url']
+            user_org.url = org['html_url']
             user_org.save()
         except ObjectDoesNotExist:
             user_org = UserOrganizations.objects.create(
                 user=request.user,  
                 name=org['name'],
                 id=org['id'],
-                url=org['url']
+                url=org['html_url']
             )
     
     return JsonResponse({"status": "success"})

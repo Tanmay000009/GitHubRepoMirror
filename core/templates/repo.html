@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="flex flex-col my-8 px-8 border border-gray-300 p-2">
   <div class="flex flex-row justify-between items-center mb-4">
     <div class="text-3xl text-white">Your repositories:</div>
@@ -14,7 +16,7 @@
       <div
         class="text-xl bg-[#eebbc3] text-[#232946] rounded-lg text-base py-1 px-3"
       >
-      <i class="fa fa-refresh" aria-hidden="true"></i>
+        <i class="fa fa-refresh" aria-hidden="true"></i>
         Refetch repositories
       </div>
     </a>
@@ -40,8 +42,9 @@
           </th>
           <th scope="col" class="px-6 py-3">Stars</th>
           <th scope="col" class="px-6 py-3 bg-[#b8c1ec] text-[#232946]">
-            Status
+            Open
           </th>
+          <th scope="col" class="px-6 py-3">Status</th>
         </tr>
       </thead>
       <tbody>
@@ -63,8 +66,15 @@
           </td>
           <td class="px-6 py-4">{{ repo.stars }}</td>
           <td class="px-6 py-4 bg-[#b8c1ec] text-[#232946]">
-            {{ repo.status }}
+            <a href="{{ repo.url }}" target="_blank" rel="noopener noreferrer">
+              <img
+                src="{% static 'icons/newPage.png' %}"
+                class="h-4 w-4"
+                alt="New Window Icon"
+              />
+            </a>
           </td>
+          <td class="px-6 py-4">{{ repo.status }}</td>
         </tr>
         {% endfor %}
       </tbody>
