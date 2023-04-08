@@ -18,7 +18,7 @@ def login(request):
 def home(request):
     repos = UserRepositories.objects.filter(user=request.user.id)[:5]
     orgs = UserOrganizations.objects.filter(user=request.user.id)[:5]
-    return render(request, 'home.html', {'repos': repos, 'orgs': orgs})
+    return render(request, 'home.html', {'repos': repos, 'orgs': orgs, 'user': request.user})
 
 @login_required
 def allRepos(request):
