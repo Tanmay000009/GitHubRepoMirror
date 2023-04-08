@@ -167,8 +167,6 @@ def get_organizations(request):
     
     if failure:
         return JsonResponse({"status": "failure"})
-    
-    print(orgs)
 
     filteredData = [{
         "id": org["id"],
@@ -249,8 +247,6 @@ def fetchOrganizationRepos(request, org_id):
     
     if failure:
         return JsonResponse({"status": "failure"})
-    
-    print(orgs)
 
     filteredData = [{
         "id": org["id"],
