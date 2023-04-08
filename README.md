@@ -19,6 +19,11 @@ This project involves creating a program that interacts with the GitHub API usin
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
+## Prerequisites
+
+1. Python 3.x installed on the system. [Get Python](https://www.python.org/).
+2. Access to a Postgres database instance.
+
 ## Getting Started: Clone and venv Setup
 
 1. Clone the repository using the git clone command. <br />
@@ -48,7 +53,7 @@ pip install -r requirements.txt
 
 ## Configuring GitHub OAuth and .env Settings
 
-1. Create a GitHub account (if you don't already have one).
+1. Create a GitHub account (if you don't already have one). [Create Github Account](https://github.com/join).
 2. Register a new OAuth application on GitHub by going to `Settings -> Developer settings -> OAuth Apps -> New OAuth App`. <br />
 [Click here](https://github.com/settings/applications/new)
 3. Enter the following information for the application:
