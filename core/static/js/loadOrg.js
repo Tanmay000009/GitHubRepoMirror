@@ -1,6 +1,6 @@
 let tries = 0;
-async function loadRepos() {
-  const response = await fetch("/get/repositorios");
+async function loadOrgs() {
+  const response = await fetch("/get/organizations");
   const data = await response.json();
 
   if (data.status === "success") {
