@@ -77,3 +77,13 @@ pip install -r requirements.txt
  ``` 
 This will start the server on the default port 8000. <br />
 2. Open your web browser and navigate to http://127.0.0.1:8000/ to see your Django project up and running.
+
+<!-- CONTACT -->
+## Contact
+
+Tanmay Vyas
+
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Tanmay000009)
+[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tanmay-vyas-09/)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:tanmayvyas09@gmail.com)
+
