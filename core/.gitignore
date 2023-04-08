@@ -15,6 +15,7 @@ pip-selfcheck.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+core/__pycache__/
 *.py[cod]
 *$py.class
 

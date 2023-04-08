@@ -14,7 +14,13 @@ def login(request):
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+    repos = UserRepositories.objects.filter(user=request.user.id)[:5]
+    return render(request, 'home.html', {'repos': repos})
+
+@login_required
+def allRepos(request):
+    repos = UserRepositories.objects.filter(user=request.user.id)
+    return render(request, 'allRepos.html', {'repos': repos})
 
 @login_required
 def load_repositorios(request):
