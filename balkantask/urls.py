@@ -12,5 +12,7 @@ urlpatterns = [
     path("", views.home, name='home'),
     path("load/repositorios", views.load_repositorios, name='load_repositorios' ),
     path("get/repositorios", views.get_repositorios, name='get_repositorios'),
-    path("all/repositorios", views.allRepos, name='allRepos')
+    path("all/repositorios", views.allRepos, name='allRepos'),
+    path("load/organizations", views.load_organizations, name='load_organizations' ),
+    path("get/organizations", views.get_organizations, name='get_organizations'),
 ]
