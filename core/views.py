@@ -192,3 +192,103 @@ def get_organizations(request):
             )
     
     return JsonResponse({"status": "success"})
+
+@login_required
+def allOrganizations(request):
+    orgs = UserOrganizations.objects.filter(user=request.user.id)
+    return render(request, 'allOrgs.html', {'orgs': orgs})
+
+@login_required
+def getOrganizationRepos(request, org_id):
+    org = UserOrganizations.objects.get(id=org_id)
+    return render(request, 'loadOrgRepos.html', {'name': org.name, 'id': org.id})
+
+@login_required
+def fetchOrganizationRepos(request, org_id):
+    access_token = request.user.userprofile.access_token
+
+    headers = {
+        'Authorization': f'token {access_token}',
+        'Accept': 'application/vnd.github.v3+json'
+    }
+
+    page_num = 1
+    orgs = []
+    failure = False
+    unauthorized = False
+
+    while True:
+        response = requests.get(f'https://api.github.com/orgs/{org_id}/repos?per_page=30&page={page_num}', headers=headers)
+        if response.status_code == 401:
+            logout(request)
+            unauthorized = True
+            break
+
+        if response.status_code != 200:
+            response = requests.get(f'https://api.github.com/orgs/{org_id}/repos?per_page=30&page={page_num}', headers=headers)
+            
+            if response.status_code == 401:
+                logout(request)
+                unauthorized = True
+                break
+            
+            if response.status_code != 200:
+                failure = True
+                break
+
+        orgs_page = json.loads(response.text)
+        orgs.extend(orgs_page)
+
+        if len(orgs_page) == 0:
+            break
+
+        page_num += 1
+
+    if unauthorized:
+        return JsonResponse({"status": "unauthorized"})
+    
+    if failure:
+        return JsonResponse({"status": "failure"})
+    
+    print(orgs)
+
+    filteredData = [{
+        "id": org["id"],
+        "name": org["name"],
+        "owner_id": org["owner"]["id"],
+        "owner_name": org["owner"]["login"],
+        "owner_email": org["owner"]["email"] if "email" in org["owner"] else None,
+        "status": "private" if org["private"] else "public",
+        "stars": org["stargazers_count"],
+        "url": org["html_url"]
+    } for org in orgs]
+
+    # save or update repositories
+    for org in filteredData:
+        try:
+            repo = UserRepositories.objects.get(id=org['id'])
+            repo.name = org['name']
+            repo.owner_id = org['owner_id']
+            repo.owner_name = org['owner_name']
+            repo.owner_email = org['owner_email']
+            repo.status = org['status']
+            repo.stars = org['stars']
+            repo.url = org['url']
+            repo.organization_id = org_id
+            repo.save()
+        except ObjectDoesNotExist:
+            repo = UserRepositories.objects.create(
+                user=request.user,  
+                name=org['name'],
+                id=org['id'],
+                owner_id=org['owner_id'],
+                owner_name=org['owner_name'],
+                owner_email=org['owner_email'],
+                status=org['status'],
+                stars=org['stars'],
+                url=org['url'],
+                organization_id=org_id
+            )
+            repo.save()
+        
+    return JsonResponse({"status": "success"})

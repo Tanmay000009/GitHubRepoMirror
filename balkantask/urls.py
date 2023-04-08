@@ -15,4 +15,7 @@ urlpatterns = [
     path("all/repositorios", views.allRepos, name='allRepos'),
     path("load/organizations", views.load_organizations, name='load_organizations' ),
     path("get/organizations", views.get_organizations, name='get_organizations'),
+    path("all/organizations", views.allOrganizations, name='allOrgs'),
+    path("get/org/<int:org_id>", views.getOrganizationRepos, name='fetch_org'),
+    path("fetch/org/<int:org_id>", views.fetchOrganizationRepos, name='fetch_org'),
 ]
