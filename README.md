@@ -23,6 +23,7 @@ This project involves creating a program that interacts with the GitHub API usin
 
 1. Python 3.11 installed on the system. [Get Python](https://www.python.org/).
 2. Access to a Postgres database instance.
+3. Docker & Docker Compose (Optional).
 
 ## Getting Started: Clone and venv Setup
 
@@ -83,6 +84,17 @@ pip install -r requirements.txt
 This will start the server on the default port 8000. <br />
 2. Open your web browser and navigate to http://127.0.0.1:8000/ to see your Django project up and running.
 
+## Starting the Program: Commands and Execution [With Docker]
+> Note: Make sure the database instance is accessible through Docker container.
+1. Build a docker image for the container.
+```
+docker build -t <app-name> . 
+```
+2. Run the docker image.
+```
+docker run -it -p 8000:8000 <app-name>
+```
+  
 <!-- CONTACT -->
 ## Contact
 
