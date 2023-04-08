@@ -18,4 +18,5 @@ urlpatterns = [
     path("all/organizations", views.allOrganizations, name='allOrgs'),
     path("get/org/<int:org_id>", views.getOrganizationRepos, name='fetch_org'),
     path("fetch/org/<int:org_id>", views.fetchOrganizationRepos, name='fetch_org'),
+    path("get/csv", views.getCSV, name='get_csv')
 ]

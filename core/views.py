@@ -6,6 +6,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import UserRepositories, UserOrganizations
 import requests
 import json
+from django.http import HttpResponse
+import csv
 # Create your views here.
 
 
@@ -288,3 +290,15 @@ def fetchOrganizationRepos(request, org_id):
             repo.save()
         
     return JsonResponse({"status": "success"})
+
+@login_required
+def getCSV(request):
+    repos = UserRepositories.objects.filter(user=request.user.id)
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="repos.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['Owner ID', 'Owner Name', 'Owner Email', 'Repo ID', 'Repo Name','Status', 'Stars Count'])
+    for repo in repos:
+        writer.writerow([repo.owner_id, repo.owner_name, repo.owner_email, repo.id, repo.name, repo.status, repo.stars])
+        
+    return response
