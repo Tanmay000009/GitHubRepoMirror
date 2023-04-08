@@ -14,8 +14,8 @@ def create_user_profile(backend, user, response, *args, **kwargs):
         profile.uid = response['id']
     if 'access_token' in response:
         profile.access_token = response['access_token']
-    if 'url' in response:
-        profile.url = response['url']
+    if 'html_url' in response:
+        profile.url = response['html_url']
     profile.save()
 
     
