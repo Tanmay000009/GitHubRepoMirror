@@ -28,12 +28,7 @@ def load_repositorios(request):
 
 @login_required
 def get_repositorios(request):
-    id = request.user.id
     access_token = request.user.userprofile.access_token
-    exisitingRepos = UserRepositories.objects.filter(user=id)
-
-    if exisitingRepos:
-        return JsonResponse({"status": "success"})
 
     headers = {
         'Authorization': f'token {access_token}',
