@@ -46,7 +46,10 @@
   <div class="flex flex-col h-full p-2">
     <div class="flex flex-col my-8 px-8">
       <div class="flex flex-row justify-between items-center mb-4">
-        <div class="text-xl text-white">Your repositories:</div>
+        <div>
+          <div class="text-3xl text-white">Your repositories:</div>
+          <div class="text-xl text-white">Total: {{ repos|length }}</div>
+        </div>
         <a href="/load/repositorios">
           <div
             class="text-xl bg-[#eebbc3] text-[#232946] rounded-lg text-base py-1 px-3"

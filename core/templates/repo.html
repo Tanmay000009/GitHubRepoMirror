@@ -79,6 +79,9 @@
         {% endfor %}
       </tbody>
     </table>
+    <div class="flex flex-row-reverse w-full px-2 text-[#d4939d]">
+      {{ repos|length }} out of {{ totalRepos }}
+    </div>
   </div>
   {% endif %}
 </div>

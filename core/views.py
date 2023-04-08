@@ -18,7 +18,9 @@ def login(request):
 def home(request):
     repos = UserRepositories.objects.filter(user=request.user.id)[:5]
     orgs = UserOrganizations.objects.filter(user=request.user.id)[:5]
-    return render(request, 'home.html', {'repos': repos, 'orgs': orgs, 'user': request.user})
+    totalRepos = UserRepositories.objects.filter(user=request.user.id).count()
+    totalOrgs = UserOrganizations.objects.filter(user=request.user.id).count()
+    return render(request, 'home.html', {'repos': repos, 'orgs': orgs, 'user': request.user, 'totalRepos': totalRepos, 'totalOrgs': totalOrgs})
 
 @login_required
 def allRepos(request):
