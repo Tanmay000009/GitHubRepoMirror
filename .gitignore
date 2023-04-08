@@ -16,19 +16,12 @@ media/
 # Ignore local configuration files
 settings/local.py
 
-# Ignore static files directory
-static/
-
 # Ignore deployment files
 deploy/
 
 # Ignore virtual environment files
 venv/
 .env/
-
-# Ignore any compiled CSS or JS
-*.css
-*.js
 
 # Ignore any compiled Python bytecode
 *.pyc
