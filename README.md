@@ -21,7 +21,7 @@ This project involves creating a program that interacts with the GitHub API usin
 
 ## Prerequisites
 
-1. Python 3.7+ installed on the system. [Get Python](https://www.python.org/).
+1. Python 3.11 installed on the system. [Get Python](https://www.python.org/).
 2. Access to a Postgres database instance.
 
 ## Getting Started: Clone and venv Setup
