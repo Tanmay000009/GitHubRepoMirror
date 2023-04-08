@@ -13,7 +13,7 @@ async function loadOrgs() {
     if (tries < 10) {
         msg.innerHTML = "Retries: " + (tries + 1) + " of 10";
       setTimeout(() => {
-        loadRepos();
+        loadOrgs();
       }, 1000);
     } else {
         msg.innerHTML = "Network error, please try again later."
@@ -23,4 +23,4 @@ async function loadOrgs() {
   }
 }
 
-loadRepos();
+loadOrgs();

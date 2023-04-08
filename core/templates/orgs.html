@@ -1,0 +1,101 @@
+<div class="flex flex-col my-8 px-8 border border-gray-300 p-2">
+  <div class="flex flex-row justify-between items-center mb-4">
+    <div class="text-3xl text-white">Your organizations:</div>
+    {% if orgs != None and orgs|length != 0 %}
+    <a href="all/organizations">
+      <div
+        class="text-xl bg-[#eebbc3] text-[#232946] rounded-lg text-base py-1 px-3"
+      >
+        View all
+      </div>
+    </a>
+    {% else %}
+    <a href="/load/organizations">
+      <div
+        class="text-xl bg-[#eebbc3] text-[#232946] rounded-lg text-base py-1 px-3"
+      >
+        Refetch
+      </div>
+    </a>
+    {% endif %}
+  </div>
+  {% if orgs == None or orgs|length == 0 %}
+  <div class="text-2xl text-[#d4939d]">No organizations found :(</div>
+  <div class="text-md text-[#d4939d]">
+    Try editing Organization permissions for balkantask
+  </div>
+
+  <a
+    href="https://github.com/settings/connections/applications/4266cc7d16112f9e9267"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="w-52 mt-4"
+  >
+    <div
+      class="text-xl bg-[#eebbc3] text-[#232946] rounded-lg text-base py-1 px-3"
+    >
+      Manage Permissions
+    </div>
+  </a>
+
+  {% else %}
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-400">
+      <thead class="text-xs uppercase text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3 bg-[#b8c1ec] text-[#232946]">
+            Organization Id
+          </th>
+          <th scope="col" class="px-6 py-3">Organization Name</th>
+          <th scope="col" class="px-6 py-3 bg-[#b8c1ec] text-[#232946]">
+            Fetch Repositories
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for org in orgs %}
+        <tr class="border-b border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium whitespace-nowrap bg-[#b8c1ec] text-[#fffffe]"
+          >
+            {{ org.id }}
+          </th>
+          <td class="px-6 py-4">{{ org.name }}</td>
+          <th scope="col" class="px-6 py-3 bg-[#b8c1ec] text-[#232946]">
+            <div
+              class="w-20 text-xl bg-white text-black rounded-lg text-base py-1 px-3"
+            >
+              <a
+                href="https://github.com/settings/connections/applications/4266cc7d16112f9e9267"
+                target="_blank"
+                rel="noopener noreferrer"
+                class=""
+              >
+                Fetch
+              </a>
+            </div>
+          </th>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="text-md text-[#d4939d] mt-2">
+    Don't see the organnization listed ? Try editing Organization permissions
+    for balkantask
+  </div>
+  <a
+    href="https://github.com/settings/connections/applications/4266cc7d16112f9e9267"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="w-60 mt-4"
+  >
+    <div
+      class="w-52 text-xl bg-[#eebbc3] text-[#232946] rounded-lg text-base py-1 px-3"
+    >
+      Manage Permissions
+    </div>
+  </a>
+  {% endif %}
+</div>
