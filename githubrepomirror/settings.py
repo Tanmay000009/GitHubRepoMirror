@@ -44,7 +44,7 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
-ROOT_URLCONF = 'balkantask.urls'
+ROOT_URLCONF = 'githubrepomirror.urls'
 
 TEMPLATES = [
     {
@@ -91,7 +91,7 @@ SOCIAL_AUTH_PIPELINE = (
 
 
 
-WSGI_APPLICATION = 'balkantask.wsgi.application'
+WSGI_APPLICATION = 'githubrepomirror.wsgi.application'
 
 
 # Database
